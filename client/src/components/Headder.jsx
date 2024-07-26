@@ -40,17 +40,16 @@ export default function Headder() {
         </Link>
         <Navbar.Toggle />
       </div>
-
       <Navbar.Collapse>
-        <Navbar.Link active={path === "/"}>
-          <Link to="/">Home</Link>
+        <Navbar.Link active={path === "/"} href="/">
+          Home
+          </Navbar.Link>
+        <Navbar.Link active={path === "/about"} href="/about">
+          About
         </Navbar.Link>
-        <Navbar.Link active={path === "/about"}>
-          <Link to="/about">About</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/projects"}>
-          <Link to="/projects">Projects</Link>
-        </Navbar.Link>
+        <Navbar.Link active={path === "/projects"} href="/projects">
+          Projects
+     </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

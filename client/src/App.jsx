@@ -1,4 +1,4 @@
-import React, { createFactory } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import Projects from "./Pages/Projects";
@@ -24,5 +24,5 @@ export default function App() {
   );
 }
 
-import React from 'react'
+
 
