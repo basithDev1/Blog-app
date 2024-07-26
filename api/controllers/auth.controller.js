@@ -1,7 +1,8 @@
 import User from "../model/user.model.js";
 import bcryptjs from "bcryptjs";
+import { errorHandler } from "../utils/error_handler.js";
 
-export const signup = async (req, res) => {
+export const signup = async (req, res,next) => {
   const { username, email, password } = req.body;
   if (
     !username ||
@@ -11,7 +12,9 @@ export const signup = async (req, res) => {
     password === "" ||
     email === ""
   ) {
-    return res.status(400).json({ message: "All fields are required" });
+    var err=errorHandler(400, "All fields are required")
+    next(err);
+    return;
   }
   // created a newUser using the Mondo db user model which we have created in the models folder
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -24,6 +27,6 @@ export const signup = async (req, res) => {
     await newUser.save();
     res.json({ message: "User created successfully" });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
